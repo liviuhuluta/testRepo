@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="shape.css">
+<script src="shape.js"></script>
+</head>
+<body>
+
+<div id='content'>
+	<select id='select' onchange="createShape()">
+		<option>shape</option>
+		<option value="rectangle" >Rectangle</option>
+		<option value="circle">Circle</option>
+	</select>
+
+	<input type='number' id='width' placeholder='width' onchange="createShape()">
+	<input type='number' id='height' placeholder='height' onchange="createShape()">
+	<input type='number' id='radius' placeholder='radius' onchange="createShape()">
+	color : <input type='color' id='fill'placeholder='color' onchange="createShape()">
+	<br>
+	<input type='number' id='top' placeholder='top' onchange="createShape()">
+	<input type='number' id='left' placeholder='left' onchange="createShape()">
+	<br>
+	<br>
+	<input type='checkbox' id='animate' >Animate
+	<br>
+	<br>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</body>
+</html>

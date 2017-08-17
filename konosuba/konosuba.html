@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="jquery-ui.min.css">
+<link rel="stylesheet" type="text/css" href="konosuba.css">
+</head>
+<body>
+
+<meta name='viewport' content='width=device-width,initial-scale=1.0'>
+<div id='slider'>
+	<div id='sliderbtn'>
+		<button onclick='callpage(1)'></button>
+		<button onclick='callpage(2)'></button>
+		<button onclick='callpage(3)'></button>
+		<button onclick='callpage(4)'></button>
+		<button onclick='callpage(5)'></button>
+	</div>
+</div>
+
+	<button id='home' title="Home button">Home</button>
+	<button id='about' title="About page">About</button>
+	<button id='contact' title="contact page">Contact</button>
+	<button id='exitcontact' title="exit the contact page">x</button>
+
+<div id='contactsrc'>
+	<form>
+		<label for='fname'></label>
+		<input type='text' name='name' placeholder='name'>
+		<label for='email'></label>
+		<input type='text' name='emailf' placeholder='email'>
+		<label for='message'></label>
+		<input type='text' name='messagef' placeholder='message'>
+		<button type='button'>send</button>
+		</form>
+	</div>
+<div id='content'>
+	<p>this is the about page</p>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="jquery.js"></script>
+<script src="jquery-ui.min.js"></script>
+<script src="konosuba.js"></script>
+</body>
+</html>

@@ -10,10 +10,11 @@ var slider=$('#slider');
 var images=[];
 var currentPage=1;
 $( document ).ready(function() {
-	$('button').button();
-	$('button').tooltip();
 	$('#content').resizable();
 	$('#slider').resizable();
+	$('#content').tabs();
+	$('#contactsrc').dialog({autoOpen: false});
+
 });
 
 
@@ -73,63 +74,55 @@ $('<img />',
              { class: 'img',
                src: 'https://myanimelist.cdn-dena.com/images/anime/8/77831.jpg', 
 
-             }).appendTo(content);
+             }).appendTo(home);
 $('<span/>',
              { class: 'text',
                text: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.', 
  
-             }).appendTo(content);
+             }).appendTo(home);
 $('<span/>',
              { class: 'text',
                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum', 
-				 }).appendTo(content);
+				 }).appendTo(home);
 
 $('<img />',
              { class: 'img',
                src: 'http://img1.ak.crunchyroll.com/i/spire3/7ba81b1709a87f5ca8930229b10029a61484092235_full.jpg', 
  
-             }).appendTo(content);
+             }).appendTo(home);
 $('<span/>',
              { class: 'text',
                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum', 
  					width:'65vw',
-             }).appendTo(content);
+             }).appendTo(home);
 
-about.click(function() {callAbout();});
-
-function callAbout() {
-	$('.img, .text').hide();
-	content.children(':first').slideToggle();
-	content.css({background:'gray'});
-	about.css({background:'#ff1a75',color:'white'});
-	home.css({background:'lightgray',color:'black'});
-	about.animate({top: '14vh',});
-	home.animate({top: '15.5vh',});
-}
-home.click(function() {callHome();});
-function callHome() {
-	home.animate({	top: '14vh'});
-	about.animate({ top: '15.5vh'});
-	$('.img , .text').slideDown();
-	content.children(':first').hide();
-	content.css({background:'white'});
-	home.css({background:'#ff1a75',color:'white'});
-	about.css({background:'lightgray',color:'black'});
-}
+    function callback() {
+      setTimeout(function() {
+        $( "#content" ).removeAttr( "style" ).hide().fadeIn();
+      }, 100 );
+    };
 
 contact.click(function() {
     callContact();
 });
 function callContact() {
-	contactsrc.slideDown()
-	contactsrc.css({display:'block'});
-	exitcontact.css({display:'block'});
+	$("#contactsrc").dialog("open");
+	$( "#contactsrc" ).dialog({
+	modal:true,
+	draggable:false,
+	resizable:false,
+    width:"100%",
+    height:$(window).height() 
+});
 }
+
+
+
 exitcontact.click(function() {
     callExitContact();
 });
 function callExitContact() {
-	contactsrc.slideUp();
+	contactsrc.effect( 'drop',  500 );
 	exitcontact.hide();
 }
 

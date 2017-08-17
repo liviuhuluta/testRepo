@@ -78,7 +78,9 @@
 	
 }
 
-
+#about{
+	height:10vh;
+}
 
 #contact{
 	border-top-left-radius: 0.5em;
@@ -88,7 +90,7 @@
 	border:0;
 	margin-left:75vw;
 	position:relative;
-	top:20.5vh;
+	top:20vh;
 	width:10vw;
 	height:5vh;
 	background:#ff9900;
@@ -117,9 +119,30 @@
       opacity: 0.8;
 }
 
+.ui-button-icon{
+	background:red;
 }
+ #content {  
+     padding: 0px;  
+     background: none;  
+     border-width: 0px;  
+ }  
+ #content .ui-tabs-nav {  
+     padding-left: 0px;  
+     background: transparent;  
+     border-width: 0px 0px 1px 0px;  
+     -moz-border-radius: 0px;  
+     -webkit-border-radius: 0px;  
+     border-radius: 0px;  
+ }  
+ #content .ui-tabs-panel {  
+     background: white;  
+     border-width: 0px 1px 1px 1px;  
+ } 
+
+
 p:first-child{
-	display:none;
+	 /* display:none;  */
 }
 
 #contactsrc{

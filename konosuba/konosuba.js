@@ -12,6 +12,8 @@ var currentPage=1;
 $( document ).ready(function() {
 	$('button').button();
 	$('button').tooltip();
+	$('#content').resizable();
+	$('#slider').resizable();
 });
 
 

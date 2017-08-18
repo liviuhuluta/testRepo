@@ -73,18 +73,6 @@
 		}
 		makeButtons();
 		
-		function createArray(){
-			elems=[];
-			var first=$('this:last-child');
-			elems.push(first);
-			for (var i=1;i<=slider.children().length-1;i++){
-				elems.push($('slider >div:nth-child('+i+')'));
-			}
-			var last=$('this:first-child');
-			elems.push(last);
-		}
-		createArray();
-		
 		function callPage(x){
 			currentPage=x;
 			distance=-30-40*x+"vw";

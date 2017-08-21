@@ -7,5 +7,7 @@ $(document).ready(function() {
 		displayPrevNext:true,
 		infiniteTransition:false,
 	});
+
 	
+
 });

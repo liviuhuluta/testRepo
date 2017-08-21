@@ -1,6 +1,6 @@
 $(document).ready(function() {
 	$('.slider').makeSlider({
-		slideEl:'div',
+		slideEl:'img',
 		vertical:false,
 		animate:true,
 		transitionTime:2000,

@@ -1,8 +1,8 @@
-(function ( $ ) {
-	
-    $.fn.makeSlider = function( options ) {
-		var slider=this;
-		var elems,currentPage=1,parentClass,unit='vw',buttonNo ;
+(function($) {
+	$.fn.makeSlider = function(options) {
+
+	  return this.each (function() {
+		  
         var settings = $.extend({
             // These are the defaults.
             animate:true,
@@ -14,7 +14,14 @@
         }, options );
 		
 		
-
+			var slider=$(this);
+			
+			var elems,currentPage=1,parentClass,unit='vw',buttonNo,currentPage ;
+			
+			$( "button" ).focus(function() {
+			  $('.button').css("background-color", "lightblue");
+			  $(this).css({backgroundColor: "#80bfff",outline:"0"}); 
+			});
 			
 			$(this).css({
 				backgroundColor: "gray",
@@ -44,23 +51,9 @@
 			});
 			function makeButtons(){
 				buttonNo=slider.children().length;
-				parentClass=slider.attr('class');
-				$('<span />',{ class: parentClass+'button' }).appendTo(slider);
-				
 				for(var i=1;i<=buttonNo-2;i++){
-					$('<button />',{ class: 'button', id:+i}).click(function(){callPage($(this).attr('id')-1);}).appendTo($('.'+parentClass+'button'));
+					$('<button />',{ class: 'button',name:+i}).click(function(){callPage($(this).attr('name')-1);}).appendTo(slider);
 				}
-				
-				
-				
-				$('.'+parentClass+'button').css({
-					width              : "20vw",
-					position           : "absolute",
-					display            : "inline-block",
-					top                : "16vh",
-					left               : "25vw",
-					
-				});
 				
 				$('.button').css({
 					backgroundColor    : "lightblue",
@@ -70,13 +63,16 @@
 					"border-radius"    : "100%",
 					display            : "inline-block",
 					margin             : "auto",
+					position           : "relative",
+					clear              : "left",
+					top                : "1.8vh",
+					left               : "-300vw",
 
 				});
 			}
 			makeButtons();
 			
 			function callPage(x){
-				
 				currentPage=x;
 				distance=-30-40*x+unit;
 				slider.find( settings.slideEl ).animate({left : distance},settings.transitionTime);
@@ -100,7 +96,7 @@
 						"white-space"  : "nowrap",
 					});
 					
-					slider.find( el ).css({
+					slider.find( settings.slideEl ).css({
 						backgroundColor: "beige",
 						width          : "18vw",
 						height         : "40vh",
@@ -115,14 +111,8 @@
 						border         : "1px solid black",
 						marginTop      : "10px",
 					});
-					$('.'+parentClass+'button').css({
-						height              : "10vw",
-						position           : "absolute",
-						display            : "inline-block",
-						top                : "17vh",
-						left               : "-9vw",
-						
-					});
+
+					$('.button').removeAttr( 'style' );
 					$('.button').css({
 						backgroundColor    : "lightblue",
 						width              : "1.3vw",
@@ -131,6 +121,10 @@
 						"border-radius"    : "100%",
 						display            : "block",
 						margin             : "auto",
+						position           : "relative",
+						top                : "-305vh",
+						left               : "-8.5vw",
+
 					});
 					break;
 		
@@ -163,6 +157,7 @@
 				case false:
 						if(settings.vertical==true){
 							function callPage(x){
+								
 								currentPage=x;
 								distance=-30-40*x+unit;
 								slider.find( settings.slideEl ).css({top : distance},settings.transitionTime);
@@ -181,68 +176,116 @@
 			}
 			
 			switch (settings.displayPrevNext){
-				
+
 				case false:
+						$( "button" ).focus(function() {
+						  $('.button').css("background-color", "lightblue");
+						  $(this).css({backgroundColor: "#80bfff",outline:"0"}); 
+						});
 						slider.children().first().css({'opacity':'0'});
-						slider.children().last().prev().css({'opacity':'0'});
+						//slider.children().last().prev().css({'opacity':'0'});
 						if(settings.vertical==false){
-							this.find( settings.slideEl ).css({
-								left           : "-61vw",
+							slider.find( settings.slideEl ).css({
+								left           : "-60vw",
 								width          : "59.5vw",
 							});
-							function callPage(x){
-								
-								currentPage=x;
-								var z=x+1;
-								distance=-59.81*z+unit;
-								slider.find( settings.slideEl ).animate({left : distance},settings.transitionTime);
+						$('.button').removeAttr( 'style' );
+						$('.button').css({
+							backgroundColor    : "lightblue",
+							width              : "1.3vw",
+							height             : "1.3vw",
+							marginLeft         : "10px",
+							"border-radius"    : "100%",
+							display            : "inline-block",
+							margin             : "auto",
+							position           : "relative",
+							clear              : "left",
+							top                : "1.8vh",
+							left               : "-455vw",
+
+						});
+							if(settings.animate==true){
+								function callPage(x){
+									
+									currentPage=x;
+									var z=x+1;
+									distance=-60*z+unit;
+									slider.find( settings.slideEl ).animate({left : distance},settings.transitionTime);
+								}
+							}
+							if(settings.animate==false){
+								function callPage(x){
+						
+									currentPage=x;
+									var z=x+1;
+									distance=-60*z+unit;
+									slider.find( settings.slideEl ).css({left : distance},settings.transitionTime);
+								}
 							}
 						}
 						
 						if(settings.vertical==true){
-							this.find( settings.slideEl ).css({
+							slider.find( settings.slideEl ).css({
 								left           : "1vw",
 								width          : "18vw",
 								height         : "59vh",
 								top            : "-59vh",
 							});
-							function callPage(x){
-								currentPage=x;
-								var z=x+1;
-								distance=-60.5*z+unit;
-								slider.find( settings.slideEl ).animate({top : distance},settings.transitionTime);
+							$('.button').removeAttr( 'style' );
+							$('.button').css({
+								backgroundColor    : "lightblue",
+								width              : "1.3vw",
+								height             : "1.3vw",
+								marginLeft         : "10px",
+								"border-radius"    : "100%",
+								display            : "block",
+								margin             : "auto",
+								position           : "relative",
+								top                : "-460vh",
+								left               : "-8.5vw",
+
+							});
+							if(settings.animate==true){
+								function callPage(x){
+									currentPage=x;
+									var z=x+1;
+									distance=-60.5*z+unit;
+									slider.find( settings.slideEl ).animate({top : distance},settings.transitionTime);
+								}
 							}
+							if(settings.animate==false){
+								function callPage(x){
+									currentPage=x;
+									var z=x+1;
+									distance=-60.5*z+unit;
+									slider.find( settings.slideEl ).css({top : distance},settings.transitionTime);
+								}
+							}
+
 						}
 				break;
 			
 			}
-			
+			var interval;
 			switch (settings.infiniteTransition){
 				case true:
-				function infiniteTrans1 (){
+				function setInfinite(){
+					interval=setInterval(function(){ callPage(currentPage+1);check(); }, 500);
 
-					var p=1;
-						do{
-								callPage(p);
-								p++;
-						}
-						while(p<buttonNo-2);
-					//infiniteTrans2();
+					
 				}
-				
-				function infiniteTrans2 (){
-					var b=5;
-					do{
-							callPage(b);
-							b--;
+				function check(){
+					if(currentPage==buttonNo-3){
+						clearInterval(interval);
+						callPage(0);
+						setInfinite();
 					}
-					while(b>=0);
-					infiniteTrans1();
 				}
-				infiniteTrans1();
+				setInfinite();
 				break;
 			
 			}
-    };
- 
-}( jQuery ));
+    
+	  });
+	};
+})(jQuery)

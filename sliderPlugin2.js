@@ -73,9 +73,11 @@
 			makeButtons();
 			
 			function callPage(x){
+	
 				currentPage=x;
 				distance=-30-40*x+unit;
-				slider.find( settings.slideEl ).animate({left : distance},settings.transitionTime);
+				clearInterval(interval);
+				slider.find( settings.slideEl ).stop( true, true ).animate({left : distance},settings.transitionTime);
 			}
 			
 			switch ( settings.vertical ) {
@@ -95,11 +97,11 @@
 						"word-wrap"    : "break-word",
 						"white-space"  : "nowrap",
 					});
-					
+					slider.find( settings.slideEl ).removeAttr( 'style' );
 					slider.find( settings.slideEl ).css({
 						backgroundColor: "beige",
 						width          : "18vw",
-						height         : "40vh",
+						height         : "50vh",
 						clear          : "both",
 						left           : "16px",
 						margin         : "0px",
@@ -110,6 +112,7 @@
 						top            : "-35vh ",
 						border         : "1px solid black",
 						marginTop      : "10px",
+						transform      : "rotate(180deg)",
 					});
 
 					$('.button').removeAttr( 'style' );
@@ -141,7 +144,8 @@
 							function callPage(x){
 								currentPage=x;
 								distance=-30-40*x+unit;
-								slider.find( settings.slideEl ).animate({top : distance},settings.transitionTime);
+								clearInterval(interval);
+								slider.find( settings.slideEl ).stop( true, true ).animate({top : distance},settings.transitionTime);
 							}
 					}
 							
@@ -149,7 +153,9 @@
 							function callPage(x){
 								currentPage=x;
 								distance=-30-40*x+unit;
-								slider.find( settings.slideEl ).animate({left : distance},settings.transitionTime);
+								clearInterval(interval);
+								slider.find( settings.slideEl ).stop( true, true ).animate({left : distance},settings.transitionTime);
+								
 							}
 					}
 					
@@ -160,6 +166,7 @@
 								
 								currentPage=x;
 								distance=-30-40*x+unit;
+								clearInterval(interval);
 								slider.find( settings.slideEl ).css({top : distance},settings.transitionTime);
 							}
 						}
@@ -169,6 +176,7 @@
 								
 								currentPage=x;
 								distance=-30-40*x+unit;
+								clearInterval(interval);
 								slider.find( settings.slideEl ).css({left : distance});
 							}
 						}
@@ -210,7 +218,8 @@
 									currentPage=x;
 									var z=x+1;
 									distance=-60*z+unit;
-									slider.find( settings.slideEl ).animate({left : distance},settings.transitionTime);
+									clearInterval(interval);
+									slider.find( settings.slideEl ).stop( true, true ).animate({left : distance},settings.transitionTime);
 								}
 							}
 							if(settings.animate==false){
@@ -219,6 +228,7 @@
 									currentPage=x;
 									var z=x+1;
 									distance=-60*z+unit;
+									clearInterval(interval);
 									slider.find( settings.slideEl ).css({left : distance},settings.transitionTime);
 								}
 							}
@@ -229,7 +239,7 @@
 								left           : "1vw",
 								width          : "18vw",
 								height         : "59vh",
-								top            : "-59vh",
+								top            : "-60.5vh",
 							});
 							$('.button').removeAttr( 'style' );
 							$('.button').css({
@@ -250,7 +260,8 @@
 									currentPage=x;
 									var z=x+1;
 									distance=-60.5*z+unit;
-									slider.find( settings.slideEl ).animate({top : distance},settings.transitionTime);
+									clearInterval(interval);
+									slider.find( settings.slideEl ).stop( true, true ).animate({top : distance},settings.transitionTime);
 								}
 							}
 							if(settings.animate==false){
@@ -258,6 +269,7 @@
 									currentPage=x;
 									var z=x+1;
 									distance=-60.5*z+unit;
+									clearInterval(interval);
 									slider.find( settings.slideEl ).css({top : distance},settings.transitionTime);
 								}
 							}
@@ -270,6 +282,7 @@
 			switch (settings.infiniteTransition){
 				case true:
 				function setInfinite(){
+					currentPage=currentPage-1;
 					interval=setInterval(function(){ callPage(currentPage+1);check(); }, 500);
 
 					

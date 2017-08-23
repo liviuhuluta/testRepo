@@ -3,9 +3,9 @@ $(document).ready(function() {
 		$('.slider').makeSlider({
 			slideEl:'img',
 			vertical:false,
-			animate:false,
+			animate:true,
 			transitionTime:2000,
-			displayPrevNext:false,
+			displayPrevNext:true,
 			infiniteTransition:false,
 		});
 
